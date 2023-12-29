@@ -37,7 +37,8 @@ session_start();
                   <li class="dropdown-header text-start">
                     <h6>More options</h6>
                   </li>
-                  <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadimg-Modal">Upload image</a></li>
+                  <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadimg-Modal">
+                  <i class="bi bi-upload"></i>Upload image</a></li>
                 </ul>
               </div>
 
@@ -79,10 +80,10 @@ session_start();
                           <td class="fw-bold">
                             <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')"
                              href="Deluploaded_img.php? deleteid= <?php echo $id ?>">
-                              <i class="fa fa-trash">Delete</i>
+                             <i class="bi bi-trash-fill"></i>
                             </a>
-                            <a class="btn btn-success" href="<?php echo  $file_path ?>" download target="_blank">
-                              <i class="fa fa-download">Download</i>
+                            <a class="btn btn-primary" href="<?php echo  $file_path ?>" download target="_blank">
+                            <i class="bi bi-download"></i>
                             </a>
                           </td>
                         </tr>
@@ -136,8 +137,8 @@ session_start();
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-outline-primary" name="submit">Upload</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Upload</button>
                   </div>
                 </form>
               </div>

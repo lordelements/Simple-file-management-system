@@ -36,7 +36,8 @@ session_start();
                                     <li class="dropdown-header text-start">
                                         <h6>More options</h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadVideo-Modal">Upload video</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadVideo-Modal">
+                                    <i class="bi bi-upload"></i>Upload video</a></li>
                                 </ul>
                             </div>
 
@@ -80,7 +81,7 @@ session_start();
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-item btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Del_UploadedVideo.php? delvideo_id= <?php echo  $row['file_id'] ?>">
-                                                                <span class="fa fa-trash">Delete</span>
+                                                                <i class="bi bi-trash-fill"></i>Delete
                                                             </a>
                                                         </li>
                                                     </ul>

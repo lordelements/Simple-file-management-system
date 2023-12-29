@@ -37,7 +37,8 @@ session_start();
                                     <li class="dropdown-header text-start">
                                         <h6>More options</h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadPDF-Modal">Upload pdf</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadPDF-Modal">
+                                    <i class="bi bi-upload"></i>Upload pdf</a></li>
                                 </ul>
                             </div>
 
@@ -81,10 +82,10 @@ session_start();
 
                                                     <td scope="row" class="fw-bold">
                                                         <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_uploadedPDF.php? delfile_id= <?php echo  $row['file_id'] ?>">
-                                                            <i class="fa fa-trash">Delete</i>
+                                                        <i class="bi bi-trash-fill"></i>
                                                         </a>
                                                         <a class="btn btn-primary" href="<?php echo  $file_path ?>" download target="_blank">
-                                                            <i class="fa fa-download">Download PDF</i>
+                                                        <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>

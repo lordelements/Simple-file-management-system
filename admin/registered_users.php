@@ -93,14 +93,14 @@ session_start();
                           <td class="fw-bold"><?php echo  $created_at ?></td>
 
                           <td class="fw-bold">
-                            <a class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Deluser_Acc.php? deluser_id= <?php echo  $row['user_id'] ?>">
-                              <i class="fa fa-trash">Delete</i>
+                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Deluser_Acc.php? deluser_id= <?php echo  $row['user_id'] ?>">
+                            <i class="bi bi-trash-fill"></i>
                             </a>
-                            <a class="btn btn-outline-success" href="Edituser_Acc.php? updateuser_id= <?php echo $user_id ?>">
-                              <span class="fa fa-edit">Edit</span>
+                            <a class="btn btn-success" href="Edituser_Acc.php? updateuser_id= <?php echo $user_id ?>">
+                            <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a class="btn btn-outline-primary" href="viewuser_acc.php? viewuser_id= <?php echo $user_id ?>">
-                              <span class="fa fa-eye">View</span>
+                            <a class="btn btn-primary" href="viewuser_acc.php? viewuser_id= <?php echo $user_id ?>">
+                            <i class="bi bi-eye-fill"></i>
                             </a>
                           </td>
 
