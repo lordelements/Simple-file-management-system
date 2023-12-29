@@ -4,7 +4,7 @@ session_start();
 
 // error_reporting(0);
 
-  if(isset($_SESSION['username'])){
+  if(isset($_SESSION['username']) && $_SESSION['usertype'] == 'administrator'){
     header('Location: ../admin/index.php');
   }
   

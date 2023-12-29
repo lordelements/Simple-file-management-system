@@ -37,9 +37,7 @@ session_start();
                                     <li class="dropdown-header text-start">
                                         <h6>More options</h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="./upload_Images_File.php">Upload image</a></li>
-                                    <li><a class="dropdown-item" href="./upload_docs_file.php">Upload pdf</a></li>
-                                    <li><a class="dropdown-item" href="./upload_DOCS_File.php">Upload docs</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadDOCS-Modal">Upload document</a></li>
                                 </ul>
                             </div>
 
@@ -113,6 +111,38 @@ session_start();
 
                         </div>
                     </div><!-- End Top Selling -->
+
+                    <!-- Upload Documentss Modal -->
+                    <div class="modal fade" id="uploadDOCS-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Upload Documents</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <?php include 'functions/upload_DocsFunct.php'; ?>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="mb-3 d-flex justify-content-center">
+                                            <img class=" justify-content-center rounded" src="./assets/img/pic_avatar.png" alt="" id="img" width="200" height="200">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="title_file" class="mt-4">Title of document</label>
+                                            <input type="text" class="form-control mt-2" name="docs_title" id="title_document" placeholder="Name of document" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationTooltip01" class="mt-4">File to upload</label>
+                                            <input type="file" class="form-control mt-2" name="docs_file" accept=".docx" id="document_file" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-outline-primary" name="submit">Upload</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- End Upload Documentss Modal -->
 
                 </div>
             </div><!-- End Left side columns -->

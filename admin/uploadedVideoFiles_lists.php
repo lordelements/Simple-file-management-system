@@ -36,10 +36,7 @@ session_start();
                                     <li class="dropdown-header text-start">
                                         <h6>More options</h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="upload_Images_File.php">Upload image</a></li>
-                                    <li><a class="dropdown-item" href="upload_PDF_File.php">Upload pdf</a></li>
-                                    <li><a class="dropdown-item" href="upload_DOCS_File.php">Upload docs</a></li>
-                                    <li><a class="dropdown-item" href="upload_Video_File.php">Upload video</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadVideo-Modal">Upload video</a></li>
                                 </ul>
                             </div>
 
@@ -122,6 +119,38 @@ session_start();
                         </div>
                     </div><!-- End Top Selling -->
 
+                    <!-- Upload Documentss Modal -->
+                    <div class="modal fade" id="uploadVideo-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Upload Documents</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <?php include 'functions/upload_VideoFunct.php'; ?>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="mb-3 d-flex justify-content-center">
+                                            <video class="justify-content-center rounded" src="" alt="" id="video" width="100" height="100"></video>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationTooltip01" class="mt-4">Video title</label>
+                                            <input type="text" class="form-control mt-2" id="validationTooltip01" name="video_title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationTooltip01" class="mt-4">Upload video</label>
+                                            <input type="file" class="form-control mt-2" id="videofile" multiple="" name="video_file" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-outline-primary" name="submit">Upload video</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- End Upload Documentss Modal -->
+
                 </div>
             </div><!-- End Left side columns -->
 
@@ -137,6 +166,16 @@ session_start();
 </main><!-- End #main -->
 
 
+<script>
+    // profile 
+    const vid = document.getElementById("video"),
+    video_file = document.getElementById("video-file");
+
+    video_file.addEventListener("change", (e) => {
+        e.preventDefault();
+        vid.src = URL.createObjectURL(video_file.files[0]);
+    });
+</script>
 
 <?php include_once('includes/scripts.php'); ?>
 <?php include_once('includes/footer.php'); ?>

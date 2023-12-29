@@ -85,10 +85,6 @@ error_reporting(E_ALL);
               </li>
 
               <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-              </li>
-
-              <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
               </li>
 
@@ -110,9 +106,8 @@ error_reporting(E_ALL);
                     $fname  = $row['firstname'];
                     $mname  = $row['middlename'];
                     $lname  = $row['lastname'];
-                    $username  = $row['username'];
+                    // $username  = $row['username'];
                     $email     = $row['email'];
-                    $pass      = $row['password'];
                     $time_created = $row['created_at'];
                   }
 
@@ -124,37 +119,26 @@ error_reporting(E_ALL);
                       <img src="<?php echo $file_path ?>" alt="Profile" class="image-fluid" width="300" height="300">
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">First Name</div>
                     <div class="col-lg-9 col-md-8"><?php echo $fname ?></div>
                   </div>
-
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Middle Name</div>
                     <div class="col-lg-9 col-md-8"><?php echo $mname ?></div>
                   </div>
-
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Last Name</div>
                     <div class="col-lg-9 col-md-8"><?php echo $lname ?></div>
                   </div>
-
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Username</div>
                     <div class="col-lg-9 col-md-8"><?php echo $username ?></div>
-                  </div>
-
+                  </div> -->
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
                     <div class="col-lg-9 col-md-8"><?php echo $email ?></div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Password</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $pass ?></div>
-                  </div>
-
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Time created</div>
                     <div class="col-lg-9 col-md-8"><?php echo $time_created ?></div>
@@ -162,31 +146,31 @@ error_reporting(E_ALL);
                   </div>
 
                 <?php
+                  } else {
 
-                } else {
-
-                  echo '<div class="row">
-                              <div class="col-md-8 col-lg-9">
-                                No found data
-                              </div>
-                          </div>';
-                }
+                    echo '<div class="row">
+                                <div class="col-md-8 col-lg-9">
+                                  No found data
+                                </div>
+                            </div>';
+                  }
                 ?>
 
               </div>
 
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
                 <h5 class="card-title">Edit Profile Details</h5>
-                <?php
-                  $username = $_SESSION["username"];
-                  $result = mysqli_query($conn, "SELECT * FROM `table_register_acc` WHERE  username='$username'");
 
-                  if ($res = mysqli_fetch_array($result)) {
-                    $user_id = $res["user_id"];
-                    $file_path = "./uploaded_Profiles/" . $res['profile_img'];
-                  }
+                <?php
+                $username = $_SESSION["username"];
+                $result = mysqli_query($conn, "SELECT * FROM `table_register_acc` WHERE  username='$username'");
+
+                if ($row = mysqli_fetch_array($result)) {
+                  $user_id = $row["user_id"];
+                  $file_path = "./uploaded_Profiles/" . $row['profile_img'];
+                }
                 ?>
+
                 <!-- Edit profile picture -->
                 <form method="post" action="functions/editprofileFunct.php">
                   <div class="row mb-3">
@@ -201,123 +185,69 @@ error_reporting(E_ALL);
                 </form> <!-- End edit profile picture -->
 
                 <?php
-                $username = $_SESSION["username"];
-                $result = mysqli_query($conn, "SELECT * FROM `table_register_acc` WHERE username='$username'");
+                  $username = $_SESSION["username"];
+                  $result = mysqli_query($conn, "SELECT * FROM `table_register_acc` WHERE username='$username'");
 
-                if ($res = mysqli_fetch_array($result)) {
-                  $user_id = $res["user_id"];
-                  $fname = $res['firstname'];
-                  $mname = $res['middlename'];
-                  $lname = $res['lastname'];
-                  $uname = $res["username"];
-                  $email = $res["email"];
-                  $pass = $res["password"];
-                  $file_path = "./uploaded_Profiles/" . $res['profile_img'];
-                }
+                  if ($row = mysqli_fetch_array($result)) {
+                    $user_id = $row["user_id"];
+                  }
                 ?>
 
                 <form method="post" action="functions/edit_loginDetails.php">
-                  <!-- <div class="row mb-3">
-                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile picture</label>
-                    <div class="col-md-8 col-lg-9">
-                      <img src="<?php echo $file_path ?>" alt="Profile" class="image-fluid" width="300" height="300">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="validationTooltip01" class="col-md-4 col-lg-3 col-form-label">File to upload</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="file" id="img-file" name="profile_img" value="<?php echo $res['profile_img'] ?>" class="form-control" required>
-                    </div>
-                  </div> -->
                   <div class="row mb-3">
                     <label for="Firstname" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input type="text" name="firstname" class="form-control" id="Firstname" value="<?php echo $res['firstname'] ?>" placeholder="Enter a firstname." required>
+                      <input type="text" name="firstname" class="form-control" id="Firstname" value="<?php echo $row['firstname'] ?>" placeholder="Enter a firstname." required>
                       <div class="invalid-feedback">Please choose a firstname.</div>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="Middlename" class="col-md-4 col-lg-3 col-form-label">Middle Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input type="text" name="middlename" class="form-control" id="Middlename" value="<?php echo $res['middlename'] ?>" placeholder="Enter a middlename." required>
+                      <input type="text" name="middlename" class="form-control" id="Middlename" value="<?php echo $row['middlename'] ?>" placeholder="Enter a middlename." required>
                       <div class="invalid-feedback">Please choose a middlename.</div>
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="Last Name" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input type="text" name="lastname" class="form-control" id="Lastname" value="<?php echo $res['lastname'] ?>" placeholder="Enter a firstname." required>
+                      <input type="text" name="lastname" class="form-control" id="Lastname" value="<?php echo $row['lastname'] ?>" placeholder="Enter a firstname." required>
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <!-- <div class="row mb-3">
                     <label for="Username" class="col-md-4 col-lg-3 col-form-label">Username</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="username" type="text" class="form-control" value="<?php echo $uname ?>" id="Username">
+                      <input name="username" type="text" class="form-control" value="<?php echo $res["username"] ?>" id="Username">
                     </div>
-                  </div>
+                  </div> -->
                   <div class="row mb-3">
                     <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" value="<?php echo $email ?>" id="Email">
+                      <input name="email" type="email" class="form-control" value="<?php echo $row["email"] ?>" id="Email">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <!-- <div class="row mb-3">
                     <label for="pass" class="col-md-4 col-lg-3 col-form-label">Password</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="password" type="password" class="form-control" value="<?php echo $pass ?>" id="pass">
+                      <input name="password" type="password" class="form-control" value="<?php echo $res["password"] ?>" id="pass">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="cpass" class="col-md-4 col-lg-3 col-form-label">Confirm Password</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="cpassword" type="password" value="<?php echo $pass ?>" class="form-control" id="cpass">
+                      <input name="cpassword" type="password" value="<?php echo $res["password"] ?>" class="form-control" id="cpass">
                     </div>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input text-black" onclick="myFunction()"> Show password </label>
-                  </div>
+                  </div> -->
+                
                   <div class="text-center col-md-8 m-2">
                     <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
                     <input type="hidden" name="usertype" class="form-control" id="usertype" value="user">
                     <button type="submit" class="btn btn-primary" name="update">Save Changes</button>
                   </div>
                 </form><!-- End Profile Edit Form -->
-              </div>
-
-
-              <div class="tab-pane fade pt-3" id="profile-change-password">
-                <!-- Change Password Form -->
-                <form>
-
-                  <div class="row mb-3">
-                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="password" type="password" class="form-control" id="currentPassword">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="newpassword" type="password" class="form-control" id="newPassword">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-                    </div>
-                  </div>
-
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Change Password</button>
-                  </div>
-                </form><!-- End Change Password Form -->
 
               </div>
-
+                <?php include 'change_pass.php'; ?>
             </div><!-- End Bordered Tabs -->
 
           </div>

@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $fileExt = explode(' ../uploaded_Profiles/', $fileName);
     $fileActualExt = strtolower(end($fileExt));
-    $fileDestination = "../uploaded_Profiles/" . $email ." ". $fileName;
+    $fileDestination = "../uploaded_Profiles/" . $fileName;
+    // $fileDestination = "../uploaded_Profiles/" . $email ." ". $fileName;
 
     $allowed = array('jpg', 'jpeg', 'png');
 

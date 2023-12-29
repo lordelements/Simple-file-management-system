@@ -65,7 +65,8 @@ session_start();
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
                                                     <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
-                                                    <button type="submit" class="btn btn-primary" name="update">Save Changes</button>
+                                                    <button type="submit" class="btn btn-outline-primary" name="update">Save Changes</button>
+                                                    <a href="users-profile.php" class="btn btn-outline-danger">Cancel</a>
                                                 </div>
                                             </div>
                                             

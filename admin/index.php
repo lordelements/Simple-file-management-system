@@ -1,12 +1,4 @@
 
-<?php
-
- if(!isset($_SESSION['username']) && $_SESSION['usertype'] != "administrator"){
-    header('Location: ../login.php');
-  }
-  
-?>
-
 <?php include_once ('includes/header.php');?>
 <?php include_once ('includes/sidebar.php');?>
 

@@ -76,6 +76,7 @@ session_start();
                         $email = $row['email'];
                         $role = $row['usertype'];
                         $file_path = "../uploaded_Profiles/" . $row['profile_img'];
+                        // $file_path = "../uploaded_Profiles/"  . $email ." ". $row['profile_img'];
                         $created_at = $row['created_at'];
 
                     ?>
@@ -84,7 +85,7 @@ session_start();
                           <td class="fw-bold" hidden><?php echo  $user_id ?></td>
                           <td><?php echo $count++ ?></td>
                           <td scope="row" class="body-rounded">
-                            <img src="<?php echo  $file_path ?>" alt="">
+                            <img src="<?php echo $file_path ?>" alt="">
                           </td>
                           <td class="fw-bold"><?php echo  $uname ?></td>
                           <td class="fw-bold"><?php echo  $email ?></td>
@@ -92,14 +93,14 @@ session_start();
                           <td class="fw-bold"><?php echo  $created_at ?></td>
 
                           <td class="fw-bold">
-                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Deluser_Acc.php? deluser_id= <?php echo  $row['user_id'] ?>">
+                            <a class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Deluser_Acc.php? deluser_id= <?php echo  $row['user_id'] ?>">
                               <i class="fa fa-trash">Delete</i>
                             </a>
-                            <a class="btn btn-success" href="Edituser_Acc.php? updateuser_id= <?php echo $user_id ?>">
-                              <span class="fa fa-pencil">Edit</span>
+                            <a class="btn btn-outline-success" href="Edituser_Acc.php? updateuser_id= <?php echo $user_id ?>">
+                              <span class="fa fa-edit">Edit</span>
                             </a>
-                            <a class="btn btn-primary" href="" download target="_blank">
-                              <span class="fa fa-pencil">View</span>
+                            <a class="btn btn-outline-primary" href="viewuser_acc.php? viewuser_id= <?php echo $user_id ?>">
+                              <span class="fa fa-eye">View</span>
                             </a>
                           </td>
 

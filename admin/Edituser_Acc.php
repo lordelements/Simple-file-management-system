@@ -94,7 +94,7 @@ session_start();
                                                 <label class="form-label">Select Role</label>
                                                 <select name="usertype" class="form-control" id="usertype" value="<?php echo $role ?>" required>
                                                     <option value="select usertype">Select usertype</option>
-                                                    <option value="administrator">Admin user</option>
+                                                    <option value="admin">Admin user</option>
                                                     <option value="user">User</option>
                                                 </select>
                                             </div>

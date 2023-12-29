@@ -37,9 +37,7 @@ session_start();
                                     <li class="dropdown-header text-start">
                                         <h6>More options</h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="./upload_Images_File.php">Upload image</a></li>
-                                    <li><a class="dropdown-item" href="./upload_PDF_File.php">Upload pdf</a></li>
-                                    <li><a class="dropdown-item" href="./upload_DOCS_File.php">Upload docs</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadPDF-Modal">Upload PDF</a></li>
                                 </ul>
                             </div>
 
@@ -67,23 +65,22 @@ session_start();
                                         if ($result->num_rows > 0) {
                                             while ($row = mysqli_fetch_assoc($result)) {
 
-                                            $file_path = "../uploaded_PDFfiles/" . $row['pdf_file'];
-                                            
+                                                $file_path = "../uploaded_PDFfiles/" . $row['pdf_file'];
+
                                         ?>
 
                                                 <tr>
                                                     <td scope="row"><?php echo $count_pdf++ ?></td>
                                                     <td scope="row">
                                                         <?php
-                                                        // echo '<iframe src="uploaded_PDFfiles/' . $row['pdf_file'] . '" 
-                                                        // width="20%" height="100px"></iframe>';
                                                         echo '<a href="#">' . $row['pdf_file'] . '</a>';
                                                         ?>
                                                     </td>
                                                     <td scope="row" class="fw-bold"><?php echo  $row['pdf_fileName'] ?></td>
 
                                                     <td scope="row" class="fw-bold">
-                                                        <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Del_uploadedPDF.php? delfile_id= <?php echo  $row['file_id'] ?>">
+                                                        <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" 
+                                                        href="Del_uploadedPDF.php? delfile_id= <?php echo  $row['file_id'] ?>">
                                                             <i class="fa fa-trash">Delete</i>
                                                         </a>
 
@@ -116,6 +113,38 @@ session_start();
 
                         </div>
                     </div><!-- End Top Selling -->
+
+                    <!-- Upload Images Modal -->
+                    <div class="modal fade" id="uploadPDF-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <?php include 'functions/upload_PDFFunct.php'; ?>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="mb-3 d-flex justify-content-center">
+                                            <img class=" justify-content-center rounded" src="./assets/img/pic_avatar.png" alt="" id="img" width="200" height="200">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="title_file" class="mt-4">Title of file</label>
+                                            <input type="text" class="form-control mt-2" id="title_file" placeholder="Name of pdf file" name="pdf_fileName" accept=".pdf" title="Upload PDF" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationTooltip01" class="mt-4">Upload pdf</label>
+                                            <input type="file" class="form-control mt-2" id="validationTooltip01" value="" name="pdf_file" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-outline-primary" name="submit">Upload</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- End Upload Images Modal -->
 
                 </div>
             </div><!-- End Left side columns -->

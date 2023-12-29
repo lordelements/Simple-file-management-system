@@ -54,7 +54,8 @@ session_start();
 
                                             <div class="col-md-12 mb-3">
                                                 <label for="title_file" class="mt-4">Title of document</label>
-                                                <input type="text" class="form-control mt-2" name="docs_title" id="title_document" placeholder="Name of document" required>
+                                                <input type="text" class="form-control mt-2" name="docs_title" id="title_document" 
+                                                placeholder="Name of document" required>
                                             </div>
                                             <div class="col-md-12 mb-3">
                                                 <label for="validationTooltip01" class="mt-4">File to upload</label>

@@ -1,5 +1,6 @@
 <?
 session_start();
+
 ?>
 
 <?php include_once('includes/header.php'); ?>
@@ -44,9 +45,10 @@ session_start();
                                 <h5 class="card-title">Upload file <span>| Today</span></h5>
                                 <div class="row">
 
-                                    <?php include 'functions/upload_ImagesFunct.php'; ?>
+                                    <?php 
+                                    // include 'functions/upload_ImagesFunct.php'; ?>
 
-                                    <form class="row g-3" method="post" action="" enctype="multipart/form-data">
+                                    <form class="row g-3" method="post" action="functions/upload_ImagesFunct.php" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="row justify-content-center">
                                                 <img class="img-fluid rounded" src="./assets/img/pic_avatar.png" alt="" id="img">

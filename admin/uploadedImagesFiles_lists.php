@@ -37,17 +37,12 @@ session_start();
                   <li class="dropdown-header text-start">
                     <h6>More options</h6>
                   </li>
-                  <li><a class="dropdown-item" href="upload_Images_File.php">Upload image</a></li>
-                  <li><a class="dropdown-item" href="upload_PDF_File.php">Upload pdf</a></li>
-                  <li><a class="dropdown-item" href="upload_DOCS_File.php">Upload docs</a></li>
+                  <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadimg-Modal">Upload image</a></li>
                 </ul>
               </div>
 
               <div class="card-body pb-0">
                 <h5 class="card-title">Top Selling <span>| Today</span></h5>
-                <a href="upload_Images_File.php" class="btn btn-primary mb-3">
-                  <i class="fa fa-plus">Upload image</i>
-                </a>
                 <table class="table table-borderless">
                   <thead>
                     <tr>
@@ -70,30 +65,26 @@ session_start();
                     if ($result) {
                       while ($row = mysqli_fetch_assoc($result)) {
 
+                        $id = $row["id"];
                         $file_path = "../uploaded_Imagesfiles/" . $row['files'];
                         $filename = " " . $row['files'];
 
                     ?>
-
                         <tr>
                           <td><?php echo $count++ ?></td>
-                          <!-- <td><?php echo $row['id'] ?></td> -->
-                          <!-- <td scope="row" class="body-rounded"><?php echo '<img src="../uploaded_Imagesfiles/' . $row['files'] . '" 
-                        alt="files" style="width: 250px; heigth: 250px;">' ?></td> -->
-                          <td scope="row" class="body-rounded"><img src="<?php echo  $file_path ?>" alt=""></td>
+                          <td scope="row" class="body-rounded"><img src="<?php echo $file_path ?>" alt=""></td>
                           <td scope="row" class="body-rounded"><?php echo  $filename ?></td>
                           <td class="fw-bold"><?php echo  $row['title_file'] ?></td>
                           <td class="fw-bold"><?php echo  $row['uploaded_at'] ?></td>
-
                           <td class="fw-bold">
-                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="delFileupload.php? deleteid= <?php echo  $row['id'] ?>">
+                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')"
+                             href="Deluploaded_img.php? deleteid= <?php echo $id ?>">
                               <i class="fa fa-trash">Delete</i>
                             </a>
                             <a class="btn btn-success" href="<?php echo  $file_path ?>" download target="_blank">
                               <i class="fa fa-download">Download</i>
                             </a>
                           </td>
-
                         </tr>
 
                       <?php
@@ -115,11 +106,43 @@ session_start();
                     </h6>
                   </div>
                 </table>
-
               </div>
-
             </div>
           </div><!-- End Top Selling -->
+
+          <!-- Upload Images Modal -->
+          <div class="modal fade" id="uploadimg-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <?php include 'functions/upload_ImagesFunct.php'; ?>
+
+                <form action="" method="post" enctype="multipart/form-data">
+                  <div class="modal-body">
+                    <div class="mb-3 d-flex justify-content-center">
+                      <img class=" justify-content-center rounded" src="./assets/img/pic_avatar.png" alt="" id="img" width="200" height="200">
+                    </div>
+                    <div class="mb-3">
+                      <label for="title_file" class="mt-4">Title of file</label>
+                      <input type="text" class="form-control mt-2" id="title_file" placeholder="Name of file" name="title_file" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="validationTooltip01" class="mt-4">File to upload</label>
+                      <input type="file" class="form-control mt-2" id="img-file" multiple="" name="files" required>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-primary" name="submit">Upload</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div><!-- End Upload Images Modal -->
 
         </div>
       </div><!-- End Left side columns -->
@@ -136,7 +159,16 @@ session_start();
 </main><!-- End #main -->
 
 
+<script>
+  // profile 
+  const image = document.getElementById("img"),
+    img_file = document.getElementById("img-file");
 
+  img_file.addEventListener("change", (e) => {
+    e.preventDefault();
+    img.src = URL.createObjectURL(img_file.files[0]);
+  });
+</script>
 
 <?php include_once('includes/scripts.php'); ?>
 <?php include_once('includes/footer.php'); ?>

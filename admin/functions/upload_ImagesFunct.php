@@ -1,6 +1,7 @@
 <?php
-// session_start();
+
 include '../connnection/config.php';
+
 if (isset($_POST['submit'])) {
     $titleFile = $_POST['title_file'];
     $file = $_FILES['files'];
@@ -21,48 +22,33 @@ if (isset($_POST['submit'])) {
         if ($fileError === 0) {
             if ($fileSize < 5000000) {
 
-                // $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                // $fileDestination = 'uploaded_files/' . $fileNameNew;
                 $sql = "INSERT INTO `upload_files`(`files`, `title_file`) VALUES('$fileName', '$titleFile')";
-                // move_uploaded_file($fileTmpName, $fileDestination);
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $result = $conn->query($sql);
-
-                ?>
-                <script>
-                    alert('Your file is successfully uploaded');
-                    window.location.href='./uploadedImagesFiles_lists.php';
-                </script>
-                <?php
-
+                
+                echo "<script>
+                alert('Your file is successfully uploaded');
+                 window.location.href='./uploadedImagesFiles_lists.php';
+                </script>";
+                
             } else {
-                
-                ?>
-                <script>
-                    alert('Your file is too big!');
-                    window.location.href='./uploadedImagesFiles_lists.php';
-                </script>
-                <?php
-                
+                echo "<script>
+                alert('Your file is too big!');
+                 window.location.href='./uploadedImagesFiles_lists.php';
+                </script>";
             }
         } else {
-           
-            ?>
-            <script>
+            echo "<script>
                 alert('Theres was an error uploading on your file!');
-                window.location.href='./uploadedImagesFiles_lists.php';
-            </script>
-            <?php
+                 window.location.href='./uploadedImagesFiles_lists.php';
+                </script>";
             
         }
     } else {
-        
-        ?>
-        <script>
-            alert('Sorry, only JPG, JPEG, PNG are allowed!');
-            window.location.href='./uploadedImagesFiles_lists.php';
-        </script>
-        <?php
+        echo "<script>
+        alert('Sorry, only JPG, JPEG, PNG are allowed!');
+         window.location.href='./uploadedImagesFiles_lists.php';
+        </script>";
         
     }
 }

@@ -25,12 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $rows['username'];
         $_SESSION['password'] = $rows['password'];
 
-        if ($rows['usertype'] == 'administrator') {
+        if ($rows['usertype'] == 'admin') {
             $_SESSION['user'] = $rows;
             ?>
                 <script>
                     alert('Welcome to Admin Dashboard');
-                    window.location.href = '../admin/index.php';
+                    window.location.href = 'admin/index.php';
                 </script>
             <?php
         }
