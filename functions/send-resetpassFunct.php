@@ -3,76 +3,87 @@
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-require './PHPMailer/Exception.php';
-require './PHPMailer/PHPMailer.php';
-require './PHPMailer/SMTP.php';
-require './connnection/config.php';
+require '../PHPMailer/Exception.php';
+require '../PHPMailer/PHPMailer.php';
+require '../PHPMailer/SMTP.php';
+require '../connnection/config.php';
 
-if(isset($_POST['submit']) && $_POST['email'])
-{
-    include "db.php";
-    
-    $email = $_POST['email'];
+if (isset($_POST['submit']) && $_POST['email']) {
 
-    $result = mysqli_query($conn,"SELECT * FROM  `table_register_acc` WHERE email='" . $email . "'");
+  $email = $_POST['email'];
 
-    $row= mysqli_fetch_array($result);
+  $result = mysqli_query($conn, "SELECT * FROM  `table_register_acc` WHERE email='" . $email . "'");
 
-  if($row)
-  {
-    
-     $token = md5($email).rand(10,9999);
+  $row = mysqli_fetch_array($result);
 
-     $expFormat = mktime(
-     date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
-     );
+  if ($row) {
 
-    $expDate = date("Y-m-d H:i:s",$expFormat);
+    $token = md5($email) . rand(10, 9999);
 
-    $update = mysqli_query($conn,"UPDATE `table_register_acc` set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $email . "'");
+    $expFormat = mktime(
+      date("H"),
+      date("i"),
+      date("s"),
+      date("m"),
+      date("d") + 1,
+      date("Y")
+    );
 
-    $link = "<a href='http://localhost/MULTIPLE_FILE_UPLOAD/forgot-pass.php?key=".$email."&token=".$token."'>Click To Reset password</a>";
+    $expDate = date("Y-m-d H:i:s", $expFormat);
 
-    require_once('phpmail/PHPMailerAutoload.php');
+    $update = mysqli_query($conn, "UPDATE `table_register_acc` set  password='" . $password . "', reset_link_token='" . $token . "' ,exp_date='" . $expDate . "' WHERE email='" . $email . "'");
+
+    $link = "<a href='http://localhost/MULTIPLE_FILE_UPLOAD/forgot-pass.php?key=" . $email . "&token=" . $token . "'>Click To Reset password</a>";
+
+    require_once('../PHPMailer/PHPMailerAutoload.php');
 
     $mail = new PHPMailer();
 
-    $mail->CharSet =  "utf-8";
-    $mail->IsSMTP();
     // enable SMTP authentication
-    $mail->SMTPAuth = true;                  
-    // GMAIL username
-    $mail->Username = "andrianelemento41@gmail.com";
-    // GMAIL password
-    $mail->Password = "Andrian1357";
-    $mail->SMTPSecure = "ssl";  
-    // sets GMAIL as the SMTP server
-    $mail->Host = "smtp.gmail.com";
-    // set the SMTP port for the GMAIL server
-    $mail->Port = "465";
-    $mail->From='andrianelemento41@gmail.com';
-    $mail->FromName='your_name';
-    $mail->AddAddress('reciever_email_id', 'reciever_name');
+    $mail->CharSet    =  "utf-8";   
+    $mail->isSMTP();
+    $mail->Host       = 'localhost';
+    $mail->SMTPAuth   = true;   
+    $mail->Port       = 465; // set the SMTP port for the GMAIL server
+    $mail->SMTPSecure = "ssl";
+     // $mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server
+   
+    // GMAIL username && password
+    $mail->Username = 'andrianelemento41@gmail.com';
+    $mail->Password = 'password';
+    $mail->FromName = 'Andrian';
+    // $mail->setFrom('andrianelemento08@gmail.com', 'Mailer');
+    $mail->AddAddress($_POST["email"]);
+
     $mail->Subject  =  'Reset Password';
     $mail->IsHTML(true);
-    $mail->Body    = 'Click On This Link to Reset Password '.$link.'';
-    if($mail->Send())
-    {
-      echo "<script>
-                Check Your Email and Click on the link sent to your email
-            </script>";
-            header("Location: ./login.php");
+    $mail->Body    = 'Click On This Link to Reset Password ' . $link . '';
+    
+    if (!$mail->Send()) {
+
+      ?>
+      <script>
+        alert("<?php echo "Message could not be sent. Mailer Error: - >" . $mail->ErrorInfo ?>");
+      </script>
+      <?php
+   
+    } else {
+
+      ?>
+          <script>
+            alert("<?php echo "Check Your Email and Click on the link sent to your " . $email ?>");
+            // window.location.replace('../forgot-pass.php');
+          </script>
+    <?php
+
     }
-    else
-    {
-      echo "Mail Error - >".$mail->ErrorInfo;
-    }
-  }else{
+  } else {
     echo "<script>
     Invalid Email Address. Go back
             </script>";
-            header("Location: ./login.php");
+    header("Location: ../login.php");
   }
+  
 }
-?>

@@ -10,17 +10,15 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="pt-4 pb-2">
-                                    <h5 class="card-title text-center pb-0 fs-4">Reset your password</h5>
-                                    <p class="text-center small">Send email to reset your password</p>
+                                    <h5 class="card-title text-center pb-0 fs-4">Verify your email</h5>\
                                 </div>
-                               
+
                                 <form action="functions/send-resetpassFunct.php" method="post" class="row g-3 needs-validation" novalidate>
                                     <div class="col-12">
                                         <label for="youremail" class="form-label">Your email</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                            <input name="email" type="email" class="form-control" id="youremail" placeholder="email"
-                                             required>
+                                            <input name="email" type="email" class="form-control" id="youremail" placeholder="email" required>
                                             <div class="invalid-feedback">Please enter your email.</div>
                                         </div>
                                     </div>
