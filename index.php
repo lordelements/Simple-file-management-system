@@ -172,7 +172,7 @@
 
             <div class="card-body">
               <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center mt-3">
                 <i class="bi bi-camera-video"></i>
                 </div>
 
@@ -191,7 +191,7 @@
                   }
                   else {
 
-                    echo '<span class="text-success small pt-1 fw-bold">No data found</span>';
+                    echo '<span class="text-success small pt-1 fw-bold m-3 mt-3">No data found</span>';
 
                   }
                 

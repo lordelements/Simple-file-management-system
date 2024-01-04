@@ -96,7 +96,7 @@ session_start();
                                         } else {
                                             ?>
                                             <tr>
-                                                <td class="mb-3 fw-bold">&nbsp;&nbsp;&nbsp;No files uploaded yet</td>
+                                                <div class="mb-3 fw-bold text-center text-danger form-control-md">&nbsp;&nbsp;&nbsp;No files uploaded yet</div>
                                             </tr>
                                         <?php
                                         }

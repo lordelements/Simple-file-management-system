@@ -36,7 +36,7 @@ session_start();
                     <h6>More options</h6>
                   </li>
                   <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadimg-Modal">
-                  <i class="bi bi-upload"></i>Upload image</a></li>
+                      <i class="bi bi-upload"></i>Upload image</a></li>
                 </ul>
               </div>
 
@@ -81,10 +81,10 @@ session_start();
 
                           <td class="fw-bold">
                             <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Deluploaded_img.php? deleteid= <?php echo  $id ?>">
-                            <i class="bi bi-trash-fill"></i>
+                              <i class="bi bi-trash-fill"></i>
                             </a>
                             <a class="btn btn-success" href="<?php echo  $file_path ?>" download target="_blank">
-                            <i class="bi bi-download"></i>
+                              <i class="bi bi-download"></i>
                             </a>
                           </td>
 
@@ -92,10 +92,11 @@ session_start();
 
                       <?php
                       }
-                    } else {
+                    } 
+                    else {
                       ?>
                       <tr>
-                        <td class="mb-3 fw-bold">&nbsp;&nbsp;&nbsp;No files uploaded yet</td>
+                        <div class="mb-3 fw-bold text-center text-danger form-control-md">&nbsp;&nbsp;&nbsp;No files uploaded yet</div>
                       </tr>
                     <?php
                     }
