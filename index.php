@@ -77,7 +77,7 @@
                     
                     echo '<div class="ps-3 mt-4 ">
                     <h6>$'.$uploadedPDF.'</h6>
-                    <span class="text-success small pt-1 fw-bold"> Total uploaded PDF </span>
+                    <span class="text-success small pt-1 fw-bold"><a href="uploadedPDFfiles.php">Total uploaded PDF </a></span>
                     </div>';
   
                   }
@@ -112,7 +112,8 @@
                     
                     echo '<div class="ps-3 mt-4 ">
                     <h6>$'.$uploadedDOCS.'</h6>
-                    <span class="text-success small pt-1 fw-bold"> Total uploaded document </span>
+                    <span class="text-success small pt-1 fw-bold"> 
+                    <a href="uploadedDOCSFiles_lists.php">Total uploaded document </a> </span>
                     </div>';
   
                   }
@@ -147,7 +148,8 @@
                     
                     echo '<div class="ps-3 mt-4 ">
                     <h6>$'.$uploadedIMG.'</h6>
-                    <span class="text-success small pt-1 fw-bold"> Total uploaded pictures </span>
+                    <span class="text-success small pt-1 fw-bold"> 
+                    <a href="uploadedImagesFiles_lists.php">Total uploaded pictures </a> </span>
                     </div>';
   
                   }
@@ -182,7 +184,8 @@
                     
                     echo '<div class="ps-3 mt-4 ">
                     <h6>$'.$uploadedVideos.'</h6>
-                    <span class="text-success small pt-1 fw-bold"> Total uploaded videos </span>
+                    <span class="text-success small pt-1 fw-bold">
+                    <a href="uploadedVideoFiles_lists.php"> Total uploaded videos </a></span>
                     </div>';
   
                   }

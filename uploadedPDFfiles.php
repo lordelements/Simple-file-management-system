@@ -39,13 +39,16 @@ session_start();
                                     </li>
                                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadPDF-Modal">
                                     <i class="bi bi-upload"></i>Upload pdf</a></li>
+                                    <li><a class="dropdown-item" href="deleteallPDF.php">
+                                    <i class="bi bi-trash"></i>Delete all PDF on folder</a></li>
                                 </ul>
                             </div>
 
                             <div class="card-body pb-0">
                                 <h5 class="card-title">Home <span>| Today</span></h5>
                                 <table class="table table-border table-hover">
-
+                                    <!-- <a href="deleteallPDF.php" class="btn btn-outline-primary mb-4">Delete all PDF on folder</a> -->
+                               
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -73,8 +76,6 @@ session_start();
                                                     <td scope="row"><?php echo $count_pdf++ ?></td>
                                                     <td scope="row">
                                                         <?php
-                                                        // echo '<iframe src="uploaded_PDFfiles/' . $row['pdf_file'] . '" 
-                                                        // width="20%" height="100px"></iframe>';
                                                         echo '<a href="#">' . $row['pdf_file'] . '</a>';
                                                         ?>
                                                     </td>
@@ -86,6 +87,15 @@ session_start();
                                                         </a>
                                                         <a class="btn btn-primary" href="<?php echo  $file_path ?>" download target="_blank">
                                                         <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <!-- <a class="btn btn-primary" href="download_pdf.php?file = <?php echo  $file_path ?>" >
+                                                        <i class="bi bi-download"></i>
+                                                        </a> -->
+                                                        <!-- <a class="btn btn-primary" href="uploaded_PDFfiles/<?php echo $row['pdf_file'] ?>" target="_blank">
+                                                        <i class="bi bi-eye"></i>
+                                                        </a> -->
+                                                        <a class="btn btn-primary" href="Open_PDF.php" target="_blank">
+                                                        <i class="bi bi-eye"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
