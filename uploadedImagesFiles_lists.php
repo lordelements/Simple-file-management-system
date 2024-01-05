@@ -1,6 +1,5 @@
 <?
 session_start();
-
 ?>
 
 <?php include_once('includes/header.php'); ?>
@@ -43,7 +42,7 @@ session_start();
               <div class="card-body pb-0"><!-- Display Uploaded Images -->
                 <h5 class="card-title">Top Selling <span>| Today</span></h5>
                 <table class="table table-borderless">
-                  <thead>
+                  <!-- <thead>
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">File image</th>
@@ -52,7 +51,7 @@ session_start();
                       <th scope="col">Date uploaded</th>
                       <th scope="col">Actions</th>
                     </tr>
-                  </thead>
+                  </thead> -->
                   <tbody>
 
                     <?php
@@ -62,38 +61,58 @@ session_start();
                     $query = "SELECT * FROM upload_files ORDER BY id DESC";
                     $result = mysqli_query($conn, $query);
                     if ($result) {
+                      $i = 0;
                       while ($row = mysqli_fetch_assoc($result)) {
                         $id = $row["id"];
                         $file_path = "./uploaded_Imagesfiles/" . $row['files'];
+                        $file_link = "./uploaded_Imagesfiles/" . $row['files'];
                         $filename = " " . $row['files'];
 
+                        if ($i % 3 == 0) {
+                          echo '<tr>';
+                        }
+
                     ?>
-
-                        <tr>
-                          <td><?php echo $count++ ?></td>
-                          <!-- <td><?php echo $row['id'] ?></td> -->
-                          <!-- <td scope="row" class="body-rounded"><?php echo '<img src="../uploaded_Imagesfiles/' . $row['files'] . '" 
-                        alt="files" style="width: 250px; heigth: 250px;">' ?></td> -->
-                          <td scope="row" class="body-rounded"><img src="<?php echo  $file_path ?>" alt=""></td>
-                          <td scope="row" class="body-rounded"><?php echo  $filename ?></td>
-                          <td class="fw-bold"><?php echo  $row['title_file'] ?></td>
-                          <td class="fw-bold"><?php echo  $row['uploaded_at'] ?></td>
-
-                          <td class="fw-bold">
-                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Deluploaded_img.php? deleteid= <?php echo  $id ?>">
-                              <i class="bi bi-trash-fill"></i>
+                        <td>
+                          <div class="card-body border">
+                            <a class="icon mt-4" href="#" data-bs-toggle="dropdown">
+                              <strong><i class="bi bi-three-dots"></i></strong>
                             </a>
-                            <a class="btn btn-success" href="<?php echo  $file_path ?>" download target="_blank">
-                              <i class="bi bi-download"></i>
-                            </a>
-                          </td>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                              <li class="dropdown-header text-start">
+                                <h6>Options</h6>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Deluploaded_img.php? deleteid= <?php echo  $id ?>">
+                                  <i class="bi bi-trash-fill btn btn-outline-danger"></i>Delete
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="<?php echo  $file_path ?>" download target="_blank">
+                                  <i class="bi bi-download  btn btn-outline-success"></i>Download
+                                </a>
+                              </li>
+                            </ul>
+                            <div>
+                              <img src="<?php echo $file_path ?>" alt="" class="mt-2 mb-3" width="500">
+                            </div>
 
-                        </tr>
+                            <span class="mt-4">
+                              <a href="<?php echo $file_link ?>">
+                                <h5 class="sub-title"><?php echo $filename ?></h5>
+                              </a>
+                              <?php echo $count++ ?>
+                            </span>
+                          </div>
+                        </td>
 
                       <?php
+                        if ($i % 3 == 2) {
+                          echo '</tr>';
+                        }
+                        $i++;
                       }
-                    } 
-                    else {
+                    } else {
                       ?>
                       <tr>
                         <div class="mb-3 fw-bold text-center text-danger form-control-md">&nbsp;&nbsp;&nbsp;No files uploaded yet</div>
@@ -105,7 +124,7 @@ session_start();
                   <div class="table_count mb-3">
                     <h6>
                       <strong>
-                        <?php echo $count ?>&nbsp;&nbsp;&nbsp; Records
+                        <?php echo $count ?>&nbsp;&nbsp;&nbsp; Uploaded pictures
                       </strong>
                     </h6>
                   </div>

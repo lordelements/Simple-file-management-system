@@ -1,25 +1,15 @@
 <?php
-include '../connnection/config.php';
+// include '../connnection/config.php';
 
-$query = "SELECT `pdf_fileName`, `pdf_file` FROM `table_pdffile` WHERE file_id = '$file_id'";
-$result = mysqli_query($conn, $query);
-$fetch = mysqli_fetch_assoc($result);
+$file = $_GET["pdf_file"]  . ".pdf";
 
-// $file = $_GET["pdf_file"]  . ".pdf";
-$file = $fetch . ".pdf";
+header("Content-disposition: attachment; filename=" . urlencode($file));
 
-header("Content-Type: application/octet-stream");
-header("Content-Disposition: attachment; filename=" . urlencode($file));
-header("Content-Type: application/download");
-header("Content-Description: File Transfer");
-header("Content-Length: " . filesize($file));
+$fb = fopen($file, "r");
 
-flush(); // This doesn't really matter. 
-
-$fp = fopen($file, "r");
-while (!feof($fp)) {
-    echo fread($fp, 65536);
+while (!feof($fb)) {
+    echo fread($fb, 8192);
     flush(); // This is essential for large downloads 
 }
 
-fclose($fp);
+fclose($fb);

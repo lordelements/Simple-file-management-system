@@ -38,26 +38,14 @@ session_start();
                                         <h6>More options</h6>
                                     </li>
                                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadPDF-Modal">
-                                            <i class="bi bi-upload"></i>Upload pdf</a></li>
-
-
-                                    <!-- <li><a class="dropdown-item" href="deleteallPDF.php">
-                                    <i class="bi bi-trash"></i>Delete all PDF on folder</a></li> -->
+                                            <i class="bi bi-upload btn btn-outline-success"></i>Upload pdf</a></li>
                                 </ul>
                             </div>
 
                             <div class="card-body pb-0">
                                 <h5 class="card-title">Home <span>| Today</span></h5>
-                                <table class="table table-border table-hover">
+                                <table class="table">
 
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">PDF File</th>
-                                            <th scope="col">PDF File Name</th>
-                                            <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
 
                                         <?php
@@ -66,42 +54,59 @@ session_start();
                                         $count_pdf = 0;
                                         $query = "SELECT * FROM table_pdffile ORDER BY file_id DESC";
                                         $result = mysqli_query($conn, $query);
-                                        if ($result->num_rows > 0) {
+                                        if ($result) {
+                                            $i = 0;
                                             while ($row = mysqli_fetch_assoc($result)) {
 
                                                 $file_path = "../uploaded_PDFfiles/" . $row['pdf_file'];
 
+                                                if ($i % 3 == 0) {
+                                                    echo '<tr>';
+                                                }
+
                                         ?>
 
-                                                <tr>
-                                                    <td scope="row"><?php echo $count_pdf++ ?></td>
-                                                    <td scope="row">
-                                                        <?php
-                                                        echo '<a href="#">' . $row['pdf_file'] . '</a>';
-                                                        ?>
-                                                    </td>
-                                                    <td scope="row" class="fw-bold"><?php echo  $row['pdf_fileName'] ?></td>
+                                                <td scope="row" class="fw-bold">
+                                                    <div class="card-body border">
+                                                        <a class="icon mt-4" href="#" data-bs-toggle="dropdown">
+                                                            <strong><i class="bi bi-three-dots"></i></strong>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                            <li class="dropdown-header text-start">
+                                                                <h6>Options</h6>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_uploadedPDF.php? delfile_id= <?php echo  $row['file_id'] ?>">
+                                                                    <i class="bi bi-trash-fill btn btn-outline-danger"></i>Delete
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="<?php echo  $file_path ?>" download target="_blank">
+                                                                    <i class="bi bi-download btn btn-outline-success"></i>Download
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="uploaded_PDFfiles/<?php echo $row['pdf_file'] ?>" target="_blank">
+                                                                    <i class="bi bi-eye btn btn-outline-primary"></i>Open with
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="gallery mb-4 mt-4">
+                                                            <iframe src="uploaded_PDFfiles/<?php echo $row['pdf_file'] ?>"></iframe>
+                                                        </div>
+                                                        <span class="mt-4">
+                                                            <h6 class="sub-title"><?php echo $row['pdf_file'] ?></h6>
+                                                            <?php echo $count_pdf++ ?>
+                                                        </span>
+                                                    </div>
+                                                </td>
 
-                                                    <td scope="row" class="fw-bold">
-                                                        <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_uploadedPDF.php? delfile_id= <?php echo  $row['file_id'] ?>">
-                                                            <i class="bi bi-trash-fill"></i>
-                                                        </a>
-                                                        <a class="btn btn-primary" href="<?php echo  $file_path ?>" download target="_blank">
-                                                            <i class="bi bi-download"></i>
-                                                        </a>
-                                                        <!-- <a class="btn btn-primary" href="download_pdf.php?file = <?php echo  $file_path ?>" >
-                                                        <i class="bi bi-download"></i>
-                                                        </a> -->
-                                                        <!-- <a class="btn btn-primary" href="uploaded_PDFfiles/<?php echo $row['pdf_file'] ?>" target="_blank">
-                                                        <i class="bi bi-eye"></i>
-                                                        </a> -->
-                                                        <a class="btn btn-primary" href="Open_PDF.php" target="_blank">
-                                                            <i class="bi bi-eye"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
 
                                             <?php
+                                                if ($i % 3 == 2) {
+                                                    echo '</tr>';
+                                                }
+                                                $i++;
                                             }
                                         } else {
                                             ?>
@@ -114,7 +119,7 @@ session_start();
 
                                     </tbody>
                                     <div class="table_count mb-3 fw-bold">
-                                        <div><?php echo $count_pdf ?>&nbsp;&nbsp;&nbsp; Records</div>
+                                        <div>&nbsp;&nbsp;&nbsp; Total Uploaded PDF is <span class="text-bold"> <?php echo $count_pdf ?></span></div>
                                     </div>
                                 </table>
                             </div>
@@ -163,7 +168,18 @@ session_start();
 
 </main><!-- End #main -->
 
+<style>
+    .gallery {
+        display: flex;
+        place-items: center;
+        justify-content: center;
+    }
 
+    .gallery iframe {
+        width: 300px;
+        height: 150px;
+    }
+</style>
 
 
 <?php include_once('includes/scripts.php'); ?>

@@ -45,27 +45,27 @@ session_start();
                                 <h5 class="card-title">Top Selling <span>| Today</span></h5>
                                 <div class="container">
 
-                                <table class="table table-borderless">
-                                    <tbody>
-                                   
-                                   <?php
-                                    include './connnection/config.php';
-                                    $count_videos = 0;
-                                    $query = "SELECT * FROM table_videos ORDER BY file_id DESC";
-                                    $result = mysqli_query($conn, $query);
+                                    <table class="table table-borderless table-responsive">
+                                        <tbody>
+
+                                            <?php
+                                            include './connnection/config.php';
+                                            $count_videos = 0;
+                                            $query = "SELECT * FROM table_videos ORDER BY file_id DESC";
+                                            $result = mysqli_query($conn, $query);
 
 
-                                    if ($result) {
-                                        $i = 0;
-                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            if ($result) {
+                                                $i = 0;
+                                                while ($row = mysqli_fetch_assoc($result)) {
 
-                                            $file_path = "./uploaded_Videofiles/" . $row['video_file'];
-                                            if ($i % 3 == 0) {
-                                                echo '<tr>';
-                                            }
+                                                    $file_path = "./uploaded_Videofiles/" . $row['video_file'];
+                                                    if ($i % 3 == 0) {
+                                                        echo '<tr>';
+                                                    }
 
-                                     ?>
-                                            <!-- <div class="row">
+                                            ?>
+                                                    <!-- <div class="row">
                                                 <div class="card-body">
                                                     <a class="icon" href="#" data-bs-toggle="dropdown">
                                                         <strong><i class="bi bi-three-dots"></i></strong>
@@ -88,28 +88,48 @@ session_start();
                                                     </span>
                                                 </div>
                                             </div> -->
-                                            
-                                                <td><video src="<?php echo $file_path ?>" controls width="100%" height="320"></video></td>
-                                           
-                                        <?php
-                                         if ($i % 3 == 2) {
-                                            echo '</tr>';
-                                        }
-                                        $i++;
-                                        }
-                                    } else {
-                                        ?>
-                                        <div>
-                                            <h5 class="mb-3 fw-bold text-center text-danger form-control-md">&nbsp;&nbsp;&nbsp;Empty lists</h5>
-                                        </div>
 
-                                    <?php
-                                     }
+                                                    <td class="">
+                                                        <div class="card-body border">
+                                                            <a class="icon mt-4" href="#" data-bs-toggle="dropdown">
+                                                                <strong><i class="bi bi-three-dots"></i></strong>
+                                                            </a>
+                                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                                <li class="dropdown-header text-start">
+                                                                    <h6>Options</h6>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_UploadedVideo.php? delvideo_id= <?php echo  $row['file_id'] ?>">
+                                                                        <i class="bi bi-trash-fill btn btn-outline-danger"></i>Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <video src="<?php echo $file_path ?>" controls class="mt-2" width="100%" height="200px"></video>
+                                                            <span>
+                                                                <h5 class="sub-title"><?php echo  $row['video_file'] ?></h5><?php echo $count_videos++ ?>
+                                                            </span>
+                                                        </div>
+                                                    </td>
 
-                                    ?>
+                                                <?php
+                                                    if ($i % 3 == 2) {
+                                                        echo '</tr>';
+                                                    }
+                                                    $i++;
+                                                }
+                                            } else {
+                                                ?>
+                                                <div>
+                                                    <h5 class="mb-3 fw-bold text-center text-danger form-control-md">&nbsp;&nbsp;&nbsp;Empty lists</h5>
+                                                </div>
 
-                                    </tbody>
-                                </table>
+                                            <?php
+                                            }
+
+                                            ?>
+
+                                        </tbody>
+                                    </table>
 
                                     <h6 class="mb-3">
                                         <strong>
@@ -167,7 +187,7 @@ session_start();
 </main><!-- End #main -->
 
 <style>
- 
+
 </style>
 
 
