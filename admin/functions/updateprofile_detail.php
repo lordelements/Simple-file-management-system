@@ -22,40 +22,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = validate_input($_POST['email']);
     $usertype = validate_input($_POST['usertype']);
 
+    $sql = "SELECT * FROM table_register_acc WHERE email='$email'";
+    $result = $conn->query($sql);
 
-        $sql = "SELECT * FROM table_register_acc WHERE email='$email'";
-        $result = $conn->query($sql);
-   
-        if (!$result->num_rows > 0) {
+    if (!$result->num_rows > 0) {
 
-            $query = "UPDATE `table_register_acc` SET `user_id`='$user_id', `firstname`='$fname',`middlename`='$mname',
+        $query = "UPDATE `table_register_acc` SET `user_id`='$user_id', `firstname`='$fname',`middlename`='$mname',
             `lastname`='$lname', `email` ='$email', `usertype`='$usertype' WHERE `user_id`='$user_id'";
-            $result = $conn->query($query);
-            
-            if ($result) {
+        $result = $conn->query($query);
 
-                echo "<script>
+        if ($result) {
+
+            echo "<script>
                         alert('Record is successfully updated.');
                         window.location.href='./users-profile.php';
-                    </script>";   
+                    </script>";
+        } else {
 
-            }
-            else {
-
-                echo "<script>
+            echo "<script>
                         alert('Record was not updated.');
                         window.location.href='./users-profile.php';
                     </script>";
-
-            }
-           
         }
-         else {
+    } else {
 
-            echo "<script>
+        echo "<script>
                         alert('Email already exist.');
                         window.location.href='./users-profile.php';
                  </script>";
-
-        }
-    } 
+    }
+}

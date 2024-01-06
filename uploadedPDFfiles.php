@@ -77,17 +77,17 @@ session_start();
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_uploadedPDF.php? delfile_id= <?php echo  $row['file_id'] ?>">
-                                                                    <i class="bi bi-trash-fill btn btn-outline-danger"></i>Delete
+                                                                    <i class="bi bi-trash-fill"></i>Delete
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="<?php echo  $file_path ?>" download target="_blank">
-                                                                    <i class="bi bi-download btn btn-outline-success"></i>Download
+                                                                <a class="dropdown-item" href="<?php echo $file_path ?>" download target="_blank">
+                                                                    <i class="bi bi-download"></i>Download
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="uploaded_PDFfiles/<?php echo $row['pdf_file'] ?>" target="_blank">
-                                                                    <i class="bi bi-eye btn btn-outline-primary"></i>Open with
+                                                                <a class="dropdown-item" href="uploaded_PDFfiles/<?php echo $file_path ?>" target="_blank">
+                                                                    <i class="bi bi-eye"></i>Open with
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -96,7 +96,8 @@ session_start();
                                                         </div>
                                                         <span class="mt-4">
                                                             <h6 class="sub-title"><?php echo $row['pdf_file'] ?></h6>
-                                                            <?php echo $count_pdf++ ?>
+                                                            <small class="mb-3"><?php echo  $row['created_date'] ?></small>
+                                                            <p class="text-bold"><strong><?php echo $count_pdf++ ?></strong></p>
                                                         </span>
                                                     </div>
                                                 </td>

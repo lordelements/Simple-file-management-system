@@ -2,6 +2,7 @@
 
   session_start();
  
+ 
  if(!isset($_SESSION['username']) && !isset($_SESSION['usertype']) ){
     header('Location: login.php');
   }

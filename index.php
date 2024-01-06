@@ -24,7 +24,7 @@
       <div class="row">
 
         <!-- Total registered users Card -->
-        <div class="col-xxl-4 col-md-6">
+        <!-- <div class="col-xxl-4 col-md-6">
           <div class="card info-card sales-card bg-secondary-light">
             <div class="card-body">
               <div class="d-flex align-items-center">
@@ -33,8 +33,6 @@
                 </div>
 
                 <?php 
-
-                  
                   $total_users = "SELECT * FROM table_register_acc"; 
                   $totalRegistered_users = mysqli_query($conn, $total_users);
                   if ($usersAcc =mysqli_num_rows($totalRegistered_users)) {
@@ -51,13 +49,13 @@
 
                   }
                 
-                    
                 ?>
                 
               </div>
             </div>
           </div>
-        </div><!-- End Total registered users Card -->
+        </div> -->
+        <!-- End Total registered users Card -->
 
         <!-- Total Uploaded PDF Card -->
         <div class="col-xxl-4 col-md-6">

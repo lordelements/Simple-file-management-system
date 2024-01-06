@@ -15,13 +15,12 @@ function validate_input($data)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_POST['user_id'];
-    // $uname = validate_input($_POST['username']);
     $newpass = validate_input(md5($_POST['password']));
     $cpassword = validate_input(md5($_POST['cpassword']));
 
     if ($newpass === $cpassword) {
-
-        $sql = "SELECT * FROM table_register_acc WHERE username='$uname' && password='$newpass'";
+        
+        $sql = "SELECT * FROM table_register_acc WHERE password='$newpass'";
         $result = $conn->query($sql);
 
         if (!$result->num_rows > 0) {
@@ -51,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          else {
 
             echo "<script>
-            alert('username already exist.');
+            alert('This password ". $newpass ." already exist.');
             window.location.href='../users-profile.php';
             </script>";
            

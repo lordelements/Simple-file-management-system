@@ -3,7 +3,7 @@
 include '../connnection/config.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(0);
+error_reporting(E_ALL);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileError = $_FILES['profile_img']['error'];
     $fileType = $_FILES['profile_img']['type'];
 
-    $fileExt = explode(' ../uploaded_Profiles/', $fileName);
+    $fileExt = explode('../uploaded_Profiles/', $fileName);
     $fileActualExt = strtolower(end($fileExt));
     $fileDestination = "../uploaded_Profiles/" . $fileName;
 

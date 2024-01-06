@@ -6,7 +6,7 @@ $result = mysqli_query($conn, "SELECT * FROM `table_register_acc` WHERE username
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         $user_id = $row["user_id"];
-        $pass  = $row['password'];
+        // $pass  = $row['password'];
     }
 }
 ?>
@@ -15,12 +15,12 @@ if ($result) {
     
     <!-- Change Password Form -->
     <form method="post" action="functions/change_passFunct.php">
-       <div class="row mb-3">
+       <!-- <div class="row mb-3">
             <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
             <div class="col-md-8 col-lg-9">
                 <input name="password" type="password" class="form-control" id="pass" value="<?php echo $pass ?>">
             </div>
-        </div>
+        </div> -->
         <div class="row mb-3">
             <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
             <div class="col-md-8 col-lg-9">

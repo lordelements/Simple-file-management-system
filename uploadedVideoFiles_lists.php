@@ -65,30 +65,7 @@ session_start();
                                                     }
 
                                             ?>
-                                                    <!-- <div class="row">
-                                                <div class="card-body">
-                                                    <a class="icon" href="#" data-bs-toggle="dropdown">
-                                                        <strong><i class="bi bi-three-dots"></i></strong>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                        <li class="dropdown-header text-start">
-                                                            <h6>Options</h6>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_UploadedVideo.php? delvideo_id= <?php echo  $row['file_id'] ?>">
-                                                                <i class="bi bi-trash-fill"></i>Delete
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-
-                                                    <video class="thumbnail fancybox" rel="ligthbox" width="100%" height="320" src="<?php echo $file_path ?>" controls></video>
-                                                    <span><?php echo  $row['video_file'] ?></span>
-                                                    <span>
-                                                        <h5 class="sub-title"><?php echo  $row['video_title'] ?></h5><?php echo $count_videos++ ?>
-                                                    </span>
-                                                </div>
-                                            </div> -->
-
+                                           
                                                     <td class="">
                                                         <div class="card-body border">
                                                             <a class="icon mt-4" href="#" data-bs-toggle="dropdown">
@@ -100,7 +77,7 @@ session_start();
                                                                 </li>
                                                                 <li>
                                                                     <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Del_UploadedVideo.php? delvideo_id= <?php echo  $row['file_id'] ?>">
-                                                                        <i class="bi bi-trash-fill btn btn-outline-danger"></i>Delete
+                                                                        <i class="bi bi-trash-fill"></i>Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -129,13 +106,14 @@ session_start();
                                             ?>
 
                                         </tbody>
-                                    </table>
-
+                                        
                                     <h6 class="mb-3">
                                         <strong>
-                                            <?php echo  $count_videos ?>&nbsp;&nbsp;&nbsp; number of videos
+                                            <?php echo  $count_videos ?>&nbsp;&nbsp;&nbsp; Total uploaded videos
                                         </strong>
                                     </h6>
+                                    </table>
+
                                 </div>
 
                             </div>

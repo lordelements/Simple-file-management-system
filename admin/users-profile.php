@@ -23,8 +23,8 @@ error_reporting(E_ALL);
 
   <section class="section profile">
     <div class="row">
-      <div class="col-xl-4">
 
+      <div class="col-xl-4">
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
             <?php
@@ -66,37 +66,30 @@ error_reporting(E_ALL);
 
           </div>
         </div>
-
       </div>
 
       <div class="col-xl-8">
-
         <div class="card">
           <div class="card-body pt-3">
+
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered">
-
               <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
               </li>
-
               <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
               </li>
-
               <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
               </li>
-
             </ul>
+
             <div class="tab-content pt-2">
-
               <div class="tab-pane fade show active profile-overview" id="profile-overview">
-
                 <h5 class="card-title">Profile Details</h5>
 
-                <?php
-
+               <?php
                 $username = $_SESSION["username"];
                 $result = mysqli_query($conn, "SELECT * FROM `table_register_acc` WHERE username='$username'");
 
@@ -110,7 +103,7 @@ error_reporting(E_ALL);
                     $time_created = $row['created_at'];
                   }
 
-                ?>
+               ?>
                   <div class="row mb-4">
                     <div class="col-lg-3 col-md-4 label ">Profile picture</div>
                     <div class="col-md-8 col-lg-9">
@@ -210,7 +203,7 @@ error_reporting(E_ALL);
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email <span class="bg-danger">*</span></label>
                     <div class="col-md-8 col-lg-9">
                       <input name="email" type="email" class="form-control" value="<?php echo $row["email"] ?>" id="Email">
                     </div>
@@ -225,8 +218,7 @@ error_reporting(E_ALL);
               </div>
 
 
-              <?php
-               include 'changepass.php'; ?>
+              <?php include 'changepass.php'; ?>
             </div><!-- End Bordered Tabs -->
 
           </div>

@@ -84,12 +84,17 @@ session_start();
                               </li>
                               <li>
                                 <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this entry?')" href="functions/Deluploaded_img.php? deleteid= <?php echo  $id ?>">
-                                  <i class="bi bi-trash-fill btn btn-outline-danger"></i>Delete
+                                  <i class="bi bi-trash-fill"></i>Delete
                                 </a>
                               </li>
                               <li>
                                 <a class="dropdown-item" href="<?php echo  $file_path ?>" download target="_blank">
-                                  <i class="bi bi-download  btn btn-outline-success"></i>Download
+                                  <i class="bi bi-download"></i>Download
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="./uploaded_Imagesfiles/<?php echo $row['files'] ?>">
+                                  <i class="bi bi-eye"></i>Open with
                                 </a>
                               </li>
                             </ul>
@@ -165,9 +170,6 @@ session_start();
               </div>
             </div>
           </div><!-- End Upload Images Modal -->
-
-
-
 
         </div>
       </div><!-- End Left side columns -->

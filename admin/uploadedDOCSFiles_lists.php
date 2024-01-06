@@ -46,7 +46,6 @@ session_start();
                                 <h5 class="card-title">Home <span>| Today</span></h5>
 
                                 <table class="table table-border table-hover">
-
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -70,7 +69,6 @@ session_start();
                                                 $file_path = "../uploaded_Docs_files/" . $row['docs_file'];
 
                                         ?>
-
                                                 <tr>
                                                     <td scope="row"><?php echo $count_docs++ ?></td>
                                                     <td>
@@ -86,7 +84,7 @@ session_start();
                                                         <i class="bi bi-trash-fill"></i>
                                                         </a>
 
-                                                        <a class="btn btn-primary" href="<?php echo  $file_path ?>" download target="_blank">
+                                                        <a class="btn btn-primary" href="<?php echo $file_path ?>" download target="_blank">
                                                         <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>

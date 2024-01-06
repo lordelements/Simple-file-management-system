@@ -38,13 +38,13 @@ session_start();
                     <h6>More options</h6>
                   </li>
                   <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#uploadimg-Modal">
-                  <i class="bi bi-upload"></i>Upload image</a></li>
+                      <i class="bi bi-upload"></i>Upload image</a></li>
                 </ul>
               </div>
 
               <div class="card-body pb-0">
                 <h5 class="card-title">Top Selling <span>| Today</span></h5>
-                <table class="table table-borderless">
+                <table class="table table-border table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -78,12 +78,14 @@ session_start();
                           <td class="fw-bold"><?php echo  $row['title_file'] ?></td>
                           <td class="fw-bold"><?php echo  $row['uploaded_at'] ?></td>
                           <td class="fw-bold">
-                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')"
-                             href="Deluploaded_img.php? deleteid= <?php echo $id ?>">
-                             <i class="bi bi-trash-fill"></i>
+                            <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')" href="Deluploaded_img.php? deleteid= <?php echo $id ?>">
+                              <i class="bi bi-trash-fill"></i>
                             </a>
                             <a class="btn btn-primary" href="<?php echo  $file_path ?>" download target="_blank">
-                            <i class="bi bi-download"></i>
+                              <i class="bi bi-download"></i> 
+                            </a>
+                            <a class="btn btn-success" href="../uploaded_Imagesfiles/<?php echo $row['files'] ?>">
+                                <i class="bi bi-eye"></i>
                             </a>
                           </td>
                         </tr>
