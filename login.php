@@ -28,7 +28,7 @@
 
                 <form action="" method="post" class="row g-3 needs-validation" novalidate>
                   <div class="col-12">
-                    <label for="yourUsername" class="form-label">Username</label>
+                    <label for="yourUsername" class="form-label">Username <span class="text-danger">*</span></label>
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-lock-fill"></i></span>
                       <input type="text" name="username" class="form-control" id="yourUsername" placeholder="username" required>
@@ -36,7 +36,7 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <label for="pass" class="form-label">Password</label>
+                    <label for="pass" class="form-label">Password <span class="text-danger">*</span></label>
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-person-fill"></i></span>
                       <input type="password" name="password" class="form-control" id="pass" placeholder="password" required>

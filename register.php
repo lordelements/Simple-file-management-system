@@ -16,9 +16,7 @@
             <!-- End Logo -->
 
             <div class="card mb-3" style="width: 50rem;">
-
               <div class="card-body">
-
                 <div class="pt-4 pb-2">
                   <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                   <p class="text-center small">Enter your personal details to create account</p>
@@ -27,54 +25,61 @@
                 <?php include 'registerFunct.php'; ?>
 
                 <form class="row g-3 needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-
                   <div class="col-4">
-                    <label for="Firstname" class="form-label">First Name</label>
+                    <label for="Firstname" class="form-label">First Name 
+                      <span class="text-danger">*</span></label>
                     <input type="text" name="firstname" class="form-control" id="Firstname" placeholder="Enter a firstname." required>
                     <div class="invalid-feedback">Please choose a firstname.</div>
                   </div>
-
                   <div class="col-4">
-                    <label for="Middlename" class="form-label">Middle Name</label>
+                    <label for="Middlename" class="form-label">Middle Name
+                      <span class="text-danger">*</span>  
+                    </label>
                     <input type="text" name="middlename" class="form-control" id="Middlename" placeholder="Enter a middlename." required>
                     <div class="invalid-feedback">Please choose a middlename.</div>
                   </div>
-
                   <div class="col-4">
-                    <label for="Lastname" class="form-label">Last Name</label>
+                    <label for="Lastname" class="form-label">Last Name
+                      <span class="text-danger">*</span>
+                    </label>
                     <input type="text" name="lastname" class="form-control" id="Lastname" placeholder="Enter a lastname." required>
                     <div class="invalid-feedback">Please choose a lastname.</div>
                   </div>
-
                   <div class="col-6">
-                    <label for="yourUsername" class="form-label">Username</label>
+                    <label for="yourUsername" class="form-label">Username
+                      <span class="text-danger">*</span>
+                    </label>
                     <input type="text" name="username" class="form-control" id="yourUsername" placeholder="Enter a username." required>
                     <div class="invalid-feedback">Please choose a username.</div>
                   </div>
-
                   <div class="col-6">
-                    <label for="yourEmail" class="form-label">Your Email</label>
+                    <label for="yourEmail" class="form-label">Your Email
+                      <span class="text-danger">*</span>
+                    </label>
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend">@</span>
                       <input type="email" name="email" class="form-control" id="yourEmail" placeholder="Enter a valid Email adddres!" required>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
                   </div>
-
                   <div class="col-12">
-                    <label for="yourProfile" class="form-label">Identification</label>
+                    <label for="yourProfile" class="form-label">Identification
+                      <span class="text-danger">*</span>
+                    </label>
                     <input type="file" name="profile_img" class="form-control" id="yourProfile" placeholder="Enter your profile identification" required>
                     <div class="invalid-feedback">Please enter your profile id!</div>
                   </div>
-
                   <div class="col-12">
-                    <label for="pass" class="form-label">Password</label>
+                    <label for="pass" class="form-label">Password
+                      <span class="text-danger">*</span>
+                    </label>
                     <input type="password" name="password" class="form-control" id="pass" placeholder="Enter your password" required>
                     <div class="invalid-feedback">Please enter your password!</div>
                   </div>
-
                   <div class="col-12">
-                    <label for="cpass" class="form-label">Confirm Password</label>
+                    <label for="cpass" class="form-label">Confirm Password
+                      <span class="text-danger">*</span>
+                    </label>
                     <input type="password" name="cpassword" class="form-control" id="cpass" placeholder="Confirm your password" required>
                     <div class="invalid-feedback">Please confirm your password!</div>
                   </div>
@@ -83,7 +88,7 @@
                     <input type="hidden" name="usertype" class="form-control" id="usertype" value="user"><span class="fa fa-eye"></span>
                   </div>
 
-                  <div class="col-12 mt-2">
+                  <div class="col-12 mt-0">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
                         <input type="checkbox" class="form-check-input text-black" onclick="myFunction()"> Show password </label>

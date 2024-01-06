@@ -183,27 +183,33 @@ error_reporting(E_ALL);
                 <form method="post" action="">
                   <?php include "functions/updateprofile_detail.php"; ?>
                   <div class="row mb-3">
-                    <label for="Firstname" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                    <label for="Firstname" class="col-md-4 col-lg-3 col-form-label">First Name
+                    <span class="text-danger">*</span>
+                    </label>
                     <div class="col-md-8 col-lg-9">
                       <input type="text" name="firstname" class="form-control" id="Firstname" value="<?php echo $row['firstname'] ?>" placeholder="Enter a firstname." required>
                       <div class="invalid-feedback">Please choose a firstname.</div>
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="Middlename" class="col-md-4 col-lg-3 col-form-label">Middle Name</label>
+                    <label for="Middlename" class="col-md-4 col-lg-3 col-form-label">Middle Name
+                    <span class="text-danger">*</span>
+                    </label>
                     <div class="col-md-8 col-lg-9">
                       <input type="text" name="middlename" class="form-control" id="Middlename" value="<?php echo $row['middlename'] ?>" placeholder="Enter a middlename." required>
                       <div class="invalid-feedback">Please choose a middlename.</div>
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="Last Name" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                    <label for="Last Name" class="col-md-4 col-lg-3 col-form-label">Last Name
+                       <span class="text-danger">*</span></label>
                     <div class="col-md-8 col-lg-9">
                       <input type="text" name="lastname" class="form-control" id="Lastname" value="<?php echo $row['lastname'] ?>" placeholder="Enter a firstname." required>
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email <span class="bg-danger">*</span></label>
+                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email 
+                      <span class="text-danger">*</span></label>
                     <div class="col-md-8 col-lg-9">
                       <input name="email" type="email" class="form-control" value="<?php echo $row["email"] ?>" id="Email">
                     </div>

@@ -26,13 +26,13 @@ if ($result) {
       </div>
     </div>
     <div class="row mb-3">
-      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password <span class="text-danger">*</span></label>
       <div class="col-md-8 col-lg-9">
         <input name="password" type="password" class="form-control" id="npass">
       </div>
     </div>
     <div class="row mb-3">
-      <label for="cPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+      <label for="cPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password <span class="text-danger">*</span></label>
       <div class="col-md-8 col-lg-9">
         <input name="cpassword" type="password" class="form-control" id="cpass">
       </div>
